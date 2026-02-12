@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="bocbot_stadium">
+
+    <physics type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>100</real_time_update_rate>
+      <ode><solver><type>quick</type><iters>10</iters></solver></ode>
+    </physics>
+
+    <scene>
+      <ambient>0.9 0.9 0.9 1</ambient>
+      <background>0.5 0.7 1.0 1</background>
+      <shadows>false</shadows>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 15 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>0.5</attenuation>
+      <length>100</length>
+    </light>
+
+    <!-- SOL -->
+    <model name="ground">
+      <static>true</static>
+      <link name="link">
+        <collision name="c">
+          <geometry><plane><normal>0 0 1</normal><size>25 25</size></plane></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><plane><normal>0 0 1</normal><size>25 25</size></plane></geometry>
+          <material>
+            <ambient>0.05 0.4 0.05 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+            <specular>0.01 0.05 0.01 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- OCTOGONE - MURS DU TERRAIN -->
+    <!-- Mur Nord (neutre) -->
+    <model name="wall_n">
+      <static>true</static>
+      <pose>0 9.0 1.0 0 0 0</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>7.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>7.0 0.3 2.0</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>1 1 1 1</diffuse><specular>0.3 0.3 0.3 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur Nord-Est (neutre) -->
+    <model name="wall_ne">
+      <static>true</static>
+      <pose>6.4 6.4 1.0 0 0 -0.785398</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>7.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>7.0 0.3 2.0</size></box></geometry>
+          <material><ambient>1.0 0.5 0.0 1</ambient><diffuse>1.0 0.6 0.0 1</diffuse><specular>0.5 0.3 0.0 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Camp orange: but en renfoncement -->
+    <model name="wall_e_top">
+      <static>true</static>
+      <pose>9.0 5.75 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>6.5 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>6.5 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>1.0 0.5 0.0 1</ambient>
+            <diffuse>1.0 0.6 0.0 1</diffuse>
+            <specular>0.5 0.3 0.0 1</specular>
+            <emissive>0.5 0.2 0.0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_e_bottom">
+      <static>true</static>
+      <pose>9.0 -5.75 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>6.5 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>6.5 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>1.0 0.5 0.0 1</ambient>
+            <diffuse>1.0 0.6 0.0 1</diffuse>
+            <specular>0.5 0.3 0.0 1</specular>
+            <emissive>0.5 0.2 0.0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_se">
+      <static>true</static>
+      <pose>6.4 -6.4 1.0 0 0 0.785398</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>7.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>7.0 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>1.0 0.5 0.0 1</ambient>
+            <diffuse>1.0 0.6 0.0 1</diffuse>
+            <specular>0.5 0.3 0.0 1</specular>
+            <emissive>0.5 0.2 0.0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_orange_back">
+      <static>true</static>
+      <pose>10.8 0 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>5.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5.0 0.3 2.0</size></box></geometry>
+          <material><ambient>1.0 0.5 0.0 1</ambient><diffuse>1.0 0.6 0.0 1</diffuse><specular>0.5 0.3 0.0 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_orange_top_side">
+      <static>true</static>
+      <pose>9.9 2.5 1.0 0 0 0</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>1.8 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.8 0.3 2.0</size></box></geometry>
+          <material><ambient>1.0 0.5 0.0 1</ambient><diffuse>1.0 0.6 0.0 1</diffuse><specular>0.5 0.3 0.0 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_orange_bottom_side">
+      <static>true</static>
+      <pose>9.9 -2.5 1.0 0 0 0</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>1.8 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.8 0.3 2.0</size></box></geometry>
+          <material><ambient>1.0 0.5 0.0 1</ambient><diffuse>1.0 0.6 0.0 1</diffuse><specular>0.5 0.3 0.0 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Film transparent a l'entree du but orange (visuel uniquement) -->
+    <model name="goal_orange_film">
+      <static>true</static>
+      <pose>9.02 0 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>5.0 0.02 2.0</size></box></geometry>
+          <material>
+            <ambient>1.0 0.6 0.0 0.24</ambient>
+            <diffuse>1.0 0.6 0.0 0.16</diffuse>
+            <specular>0.9 0.7 0.3 0.24</specular>
+          </material>
+          <transparency>0.78</transparency>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur Sud (neutre) -->
+    <model name="wall_s">
+      <static>true</static>
+      <pose>0 -9.0 1.0 0 0 0</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>7.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>7.0 0.3 2.0</size></box></geometry>
+          <material><ambient>0.95 0.95 0.95 1</ambient><diffuse>1 1 1 1</diffuse><specular>0.3 0.3 0.3 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Branding simple compatible Gazebo Classic -->
+    <model name="brand_wall_n">
+      <static>true</static>
+      <pose>0 8.84 1.2 1.570796 0 0</pose>
+      <link name="l">
+        <visual name="v">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>5.4 2.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///home/seatech/Bureau/ROS2_SEATECH/projet/bocbot_ws/install/bocbot_hunter/share/bocbot_hunter/media/materials/scripts</uri>
+              <uri>file:///home/seatech/Bureau/ROS2_SEATECH/projet/bocbot_ws/install/bocbot_hunter/share/bocbot_hunter/media/materials/textures</uri>
+              <name>ChickenDrive/LogoWall</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="brand_wall_s">
+      <static>true</static>
+      <pose>0 -8.84 1.2 -1.570796 0 0</pose>
+      <link name="l">
+        <visual name="v">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>5.4 2.4</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///home/seatech/Bureau/ROS2_SEATECH/projet/bocbot_ws/install/bocbot_hunter/share/bocbot_hunter/media/materials/scripts</uri>
+              <uri>file:///home/seatech/Bureau/ROS2_SEATECH/projet/bocbot_ws/install/bocbot_hunter/share/bocbot_hunter/media/materials/textures</uri>
+              <name>ChickenDrive/LogoWall</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur Sud-Ouest (camp bleu) -->
+    <model name="wall_sw">
+      <static>true</static>
+      <pose>-6.4 -6.4 1.0 0 0 -0.785398</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>7.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>7.0 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+            <specular>0.3 0.3 0.8 1</specular>
+            <emissive>0.0 0.0 0.5 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Camp bleu: but en renfoncement -->
+    <model name="wall_w_top">
+      <static>true</static>
+      <pose>-9.0 5.75 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>6.5 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>6.5 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+            <specular>0.3 0.3 0.8 1</specular>
+            <emissive>0.0 0.0 0.5 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_w_bottom">
+      <static>true</static>
+      <pose>-9.0 -5.75 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>6.5 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>6.5 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+            <specular>0.3 0.3 0.8 1</specular>
+            <emissive>0.0 0.0 0.5 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur Nord-Ouest (camp bleu) -->
+    <model name="wall_nw">
+      <static>true</static>
+      <pose>-6.4 6.4 1.0 0 0 0.785398</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>7.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>7.0 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0 1</ambient>
+            <diffuse>0.0 0.0 1.0 1</diffuse>
+            <specular>0.3 0.3 0.8 1</specular>
+            <emissive>0.0 0.0 0.5 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_blue_back">
+      <static>true</static>
+      <pose>-10.8 0 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>5.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5.0 0.3 2.0</size></box></geometry>
+          <material><ambient>0.0 0.0 1.0 1</ambient><diffuse>0.0 0.0 1.0 1</diffuse><specular>0.3 0.3 0.8 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_blue_top_side">
+      <static>true</static>
+      <pose>-9.9 2.5 1.0 0 0 0</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>1.8 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.8 0.3 2.0</size></box></geometry>
+          <material><ambient>0.0 0.0 1.0 1</ambient><diffuse>0.0 0.0 1.0 1</diffuse><specular>0.3 0.3 0.8 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_blue_bottom_side">
+      <static>true</static>
+      <pose>-9.9 -2.5 1.0 0 0 0</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>1.8 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.8 0.3 2.0</size></box></geometry>
+          <material><ambient>0.0 0.0 1.0 1</ambient><diffuse>0.0 0.0 1.0 1</diffuse><specular>0.3 0.3 0.8 1</specular></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Film transparent a l'entree du but bleu (visuel uniquement) -->
+    <model name="goal_blue_film">
+      <static>true</static>
+      <pose>-9.02 0 1.0 0 0 1.570796</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>5.0 0.02 2.0</size></box></geometry>
+          <material>
+            <ambient>0.2 0.5 1.0 0.24</ambient>
+            <diffuse>0.2 0.5 1.0 0.16</diffuse>
+            <specular>0.5 0.7 1.0 0.24</specular>
+          </material>
+          <transparency>0.78</transparency>
+        </visual>
+      </link>
+    </model>
+
+    <!-- LIGNES DU TERRAIN -->
+    <model name="line_center">
+      <static>true</static>
+      <pose>0 0 0.02 0 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>0.15 16 0.02</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="center_circle">
+      <static>true</static>
+      <pose>0 0 0.02 0 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>1.5</radius><length>0.02</length></cylinder></geometry>
+          <material><ambient>1 1 1 0.8</ambient><diffuse>1 1 1 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- BALLON -->
+    <model name="ball">
+      <pose>0 0 4.0 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><sphere><radius>0.50</radius></sphere></geometry>
+          <surface>
+            <bounce>
+              <restitution_coefficient>0.95</restitution_coefficient>
+              <threshold>0.005</threshold>
+            </bounce>
+            <friction>
+              <ode>
+                <mu>0.3</mu>
+                <mu2>0.3</mu2>
+                <slip1>0.02</slip1>
+                <slip2>0.02</slip2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <kp>800000.0</kp>
+                <kd>30.0</kd>
+                <max_vel>200.0</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+        <visual name="v">
+          <geometry><sphere><radius>0.50</radius></sphere></geometry>
+          <material>
+            <script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Red</name></script>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>200 0 0 1</emissive>
+            <specular>1 0 0 1</specular>
+          </material>
+        </visual>
+        <inertial>
+          <mass>2.5</mass>
+          <inertia>
+            <ixx>0.08</ixx>
+            <iyy>0.08</iyy>
+            <izz>0.08</izz>
+          </inertia>
+        </inertial>
+        <gravity>true</gravity>
+        <velocity_decay>
+          <linear>0.001</linear>
+          <angular>0.005</angular>
+        </velocity_decay>
+      </link>
+    </model>
+
+    <!-- CAMERA TOP-DOWN -->
+    <model name="top_down_camera">
+      <static>true</static>
+      <pose>0 0 24 0 0 0</pose>
+      <link name="link">
+        <sensor name="camera" type="camera">
+          <update_rate>55.0</update_rate>
+          <pose>0 0 0 0 1.5708 0</pose>
+          <camera name="cam">
+            <horizontal_fov>0.95</horizontal_fov>
+            <image>
+              <width>512</width>
+              <height>384</height>
+            </image>
+            <clip><near>0.5</near><far>200</far></clip>
+          </camera>
+          <plugin name="top_camera_controller" filename="libgazebo_ros_camera.so">
+            <ros>
+              <namespace>/game</namespace>
+            </ros>
+            <camera_name>top_down</camera_name>
+            <frame_name>top_down_camera</frame_name>
+          </plugin>
+        </sensor>
+        <visual name="cam_visual">
+          <geometry><box><size>0.1 0.1 0.1</size></box></geometry>
+          <material><ambient>0 0 0 1</ambient><diffuse>0 0 0 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Dome transparent bleu ciel au-dessus de l'arene (visuel uniquement) -->
+    <model name="arena_sky_dome">
+      <static>true</static>
+      <pose>0 0 3.8 0 0 0</pose>
+      <link name="l">
+        <visual name="v">
+          <geometry><sphere><radius>11.2</radius></sphere></geometry>
+          <material>
+            <ambient>0.45 0.75 1.0 0.24</ambient>
+            <diffuse>0.45 0.75 1.0 0.18</diffuse>
+            <specular>0.7 0.85 1.0 0.24</specular>
+          </material>
+          <transparency>0.76</transparency>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PLUGINS GAZEBO -->
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/gazebo</namespace>
+      </ros>
+    </plugin>
+
+    <!-- GUI camera principale -->
+    <gui><camera name="user_camera"><pose>0 -18 14 0 0.5 1.57</pose></camera></gui>
+
+  </world>
+</sdf>

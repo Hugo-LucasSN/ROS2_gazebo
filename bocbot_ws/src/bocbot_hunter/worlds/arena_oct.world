@@ -1,0 +1,571 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="bocbot_stadium">
+
+    <physics type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>100.0</real_time_update_rate>
+      <ode><solver><type>quick</type><iters>10</iters></solver></ode>
+    </physics>
+
+    <scene>
+      <ambient>0.9 0.9 0.9 1</ambient>
+      <background>0.5 0.7 1.0</background>
+      <shadows>false</shadows>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+    </scene>
+
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 15 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2</specular>
+      <attenuation>0.5</attenuation>
+      <length>100</length>
+    </light>
+
+    <!-- SOL -->
+    <model name="ground">
+      <static>true</static>
+      <pose>0 0 0 0</pose>
+      <link name="link">
+        <collision name="c">
+          <geometry><plane><normal>0 0 1</normal><size>25 25</size></plane></geometry>
+        </collision>
+        <visual name="v">
+          <geometry><plane><normal>0 0 1</normal><size>25 25</size></plane></geometry>
+          <material>
+            <ambient>0.1 0.6 0.1</ambient>
+            <diffuse>0.2 0.5 0.1</diffuse>
+            <specular>0.1 0.1 0.1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- TERRAIN OCTOGONAL 8 MURS -->
+    <!-- CAMP GAUCHE (BLEU) - mur arriere + murs lateraux gauche -->
+    <model name="wall_blue_back">
+      <static>true</static>
+      <pose>-10.5 0 1.0 0 0 1.57</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>3.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>3.0 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0</ambient>
+            <diffuse>0.3 0.3 1.0</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_blue_back_top">
+      <static>true</static>
+      <pose>-10.5 2.0 1.0 0 0 1.57</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>0.3 2.0 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.3 2.0 2.0</size></box></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0</ambient>
+            <diffuse>0.3 0.3 1.0</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_blue_back_bottom">
+      <static>true</static>
+      <pose>-10.5 -2.0 1.0 0 0 1.57</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>0.3 2.0 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.3 2.0 2.0</size></box></geometry>
+          <material>
+            <ambient>0.0 0.0 1.0</ambient>
+            <diffuse>0.3 0.3 1.0</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CAMP GAUCHE - tribunes bleues -->
+    <model name="tribune_blue_nw">
+      <static>true</static>
+      <pose>-6.0 2.0 1.0 0.0 0.785</pose>
+      <link name="base">
+        <collision name="c"><geometry><box><size>5 5.0.3 1.5</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>5 5 0.3 1.5</size></box></geometry>
+          <material>
+            <ambient>0.0 0.2 1.0</ambient>
+            <diffuse>0.5 0.2 1.0</diffuse>
+            <specular>0.2 0.2 1.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="tribune_blue_sw">
+      <static>true</static>
+      <pose>0.0 2.0 1.0 0.785</pose>
+      <link name="base">
+        <collision name="c"><geometry><box><size>5 0.3 1.5</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>5 5 0.3 1.5</size></box></geometry>
+          <material>
+            <ambient>0.0 0.2 1.0</ambient>
+            <diffuse>0.5 0.2 1.0</diffuse>
+            <specular>0.2 0.2 1.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CAMP DROITE (ORANGE) - mur arriere + murs lateraux droite -->
+    <model name="wall_orange_back">
+      <static>true</static>
+      <pose>10.5 0 1.0 0 0 1.57</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>3.0 0.3 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>3.0 0.3 2.0</size></box></geometry>
+          <material>
+            <ambient>0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_orange_back_top">
+      <static>true</static>
+      <pose>10.5 2.0 1.0 0 0 1.57</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>0.3 2.0 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.3 2.0 2.0</size></box></geometry>
+          <material>
+            <ambient>0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="wall_orange_back_bottom">
+      <static>true</static>
+      <pose>10.5 -2.0 1.0 0 0 1.57</pose>
+      <link name="l">
+        <collision name="c"><geometry><box><size>0.3 2.0 2.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.3 2.0 2.0</size></box></geometry>
+          <material>
+            <ambient>0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CAMP DROITE - tribunes oranges -->
+    <model name="tribune_orange_ne">
+      <static>true</static>
+      <pose>6.0 2.0 1.0 0.0 785</pose>
+      <link name="base">
+        <collision name="c"><geometry><box><size>5 5 0.3 1.5</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>5 5 0.3 1.5</size></box></geometry>
+          <material>
+            <ambient>0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="tribune_orange_sw">
+      <static>true</static>
+      <pose>0.0 2.0 1.0 0 0 785</pose>
+      <link name="base">
+        <collision name="c"><geometry><box><size>5 5 0.3 1.5</size></box></geometry></collision>
+        <visual name="v">
+          <geometry><box><size>5 5 0.3 1.5</size></geometry>
+          <material>
+            <ambient>0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- LIGNES DU TERRAIN -->
+    <model name="line_north">
+      <static>true</static>
+      <pose>0 9.0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>16 0.02 0.02</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="line_south">
+      <static>true</static>
+      <pose>0 -9.0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>16 0.02 0.02</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="line_east">
+      <static>true</static>
+      <pose>9.0 0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>16 0.02 0.02</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="line_west">
+      <static>true</static>
+      <pose>-9.0 0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>16 0.02 0.02</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CERCLES (OCTOGONE INFERIEUR) -->
+    <model name="circle_north">
+      <static>true</static>
+      <pose>0 0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="circle_northeast">
+      <static>true</static>
+      <pose>6.4 6.4 0.02 0 0 0.785</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="circle_east">
+      <static>true</static>
+      <pose>9.0 0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="circle_southeast">
+      <static>true</static>
+      <pose>6.4 -6.4 0 02 0 0 0.785</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="circle_south">
+      <static>true</static>
+      <pose>0 -9.0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="view"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="circle_southwest">
+      <static>true</static>
+      <pose>-6.4 -6.4 0.02 0 0 0.785</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="circle_west">
+      <static>true</static>
+      <pose>-9.0 0 0 02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 1 0 8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="circle_northwest">
+      <static>true</static>
+      <pose>-6.4 -6.4 0 02 0 0 0.785</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>0.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.0 5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- LIGNES CENTRALES -->
+    <model name="line_center">
+      <static>true</static>
+      <pose>0 0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><box><size>0.15 16 0.02</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.3 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="center_circle">
+      <static>true</static>
+      <pose>0 0 0.02 0 0</pose>
+      <link name="l">
+        <visual name="v"><geometry><cylinder><radius>1.5</radius><length>0.02</length></cylinder></geometry>
+          <material>
+            <ambient>1 1 1 1 0.8</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.3 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CAGES -->
+    <!-- CAGE BLEUE -->
+    <model name="goal_blue">
+      <static>true</static>
+      <pose>-8.5 0 2.5 0 0 0</pose>
+      <link name="crossbar">
+        <collision name="c"><geometry><box><size>0.15 4.4 0.15</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 4.4 0.15</size></box></geometry>
+          <material>
+            <ambient>0.3 0.3 1.0</ambient>
+            <diffuse>0.4 0.4 1 0</diffuse>
+            <specular>0.3 0.4 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_blue_left">
+      <static>true</static>
+      <pose>-8.5 2.0 1.25 0 0 0</pose>
+      <link name="post">
+        <collision name="c"><geometry><box><size>0.15 0.15 2.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 0.15 2.5</size></box></geometry>
+          <material>
+            <ambient>0.3 0.3 1.0</ambient>
+            <diffuse>0.4 0.4 1 0</diffuse>
+            <specular>0.3 0.4 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_blue_right">
+      <static>true</static>
+      <pose>-8.5 -2.0 1.25 0 0 0</pose>
+      <link name="post">
+        <collision name="c"><geometry><size>0.15 0.15 2.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 0.15 2.5</size></box></geometry>
+          <material>
+            <ambient>0.3 0.3 1.0</ambient>
+            <diffuse>0.4 0.4 1 0</diffuse>
+            <specular>0.3 0.4 0.5</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_blue_net">
+      <static>true</static>
+      <pose>-8.55 0 1.25 0 0 0</pose>
+      <link name="net">
+        <visual name="v"><geometry><box><size>0.5 4.4 2.5</size></box></geometry>
+          <material>
+            <ambient>0.3 0.3 1.0</ambient>
+            <diffuse>0.3 0.4 1.0</diffuse>
+            <specular>0.3 0.3 1.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CAGE ORANGE -->
+    <model name="goal_orange">
+      <static>true</static>
+      <pose>8.5 0 2.5 0 0 0</pose>
+      <link name="crossbar">
+        <collision name="c"><geometry><box><size>0.15 4.4 0.15</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 4.4 0.15</size></box></geometry>
+          <material>
+            <ambient>1.0 0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_orange_left">
+      <static>true</static>
+      <pose>8.5 2.0 1.25 0 0 0</pose>
+      <link name="post">
+        <collision name="c"><geometry><box><size>0.15 0.15 2.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 0.15 2.5</size></geometry>
+          <material>
+            <ambient>1.0 0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_orange_right">
+      <static>true</static>
+      <pose>8.5 -2.0 1.25 0 0 0</pose>
+      <link name="post">
+        <collision name="c"><geometry><box><size>0.15 0.15 2.5</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 0.15 2.5</size></geometry>
+          <material>
+            <ambient>1.0 0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="goal_orange_net">
+      <static>true</static>
+      <pose>8.55 0 1.25 0 0 0 0</pose>
+      <link name="net">
+        <visual name="v"><geometry><box><size>0.5 4.4 2.5</size></box></geometry>
+          <material>
+            <ambient>0.8 0.4 0.0</ambient>
+            <diffuse>1.0 0.5 0.0</diffuse>
+            <specular>0.5 0.3 0.0</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- CAMERA TOP-DOWN -->
+    <model name="top_down_camera">
+      <static>true</static>
+      <pose>0 0 25 0 0 0</pose>
+      <link name="link">
+        <sensor name="camera" type="camera">
+          <pose>0 0 0 0 0</pose>
+          <camera name="cam">
+            <horizontal_fov>2.8</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+              <pixel_depth>1</pixel_depth>
+            </image>
+            <clip><near>0.1</near><far>100</far></clip>
+          </camera>
+          <plugin name="top_camera_controller" filename="libgazebo_ros_camera.so">
+            <ros>
+              <namespace>/game</namespace>
+            </ros>
+            <camera_name>top_down</camera_name>
+            <frame_name>top_down_camera</frame_name>
+          </plugin>
+        </sensor>
+        <visual name="cam_visual">
+          <geometry><box><size>0.1 0.1 0.1</size></box></geometry>
+          <material>
+            <ambient>0.1 0.1 0.1</ambient>
+            <diffuse>0.1 0.1 0.1</diffuse>
+            <specular>0.1 0.1 0.1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- PLUGINS GAZEBO -->
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros>
+        <namespace>/gazebo</namespace>
+      </ros>
+    </plugin>
+
+  </world>
+</sdf>

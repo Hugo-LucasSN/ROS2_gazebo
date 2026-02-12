@@ -1,0 +1,32 @@
+# ROS2 / Colcon
+build/
+install/
+log/
+*.pyc
+__pycache__/
+
+# Gazebo
+.gazebo/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.bak
+*.tmp
+
+# Python
+*.egg-info/
+dist/
+*.egg
+
+# Keep only necessary files
+!bocbot_ws/src/**/*.py
